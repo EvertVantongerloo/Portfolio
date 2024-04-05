@@ -26,8 +26,8 @@
   background-color: grey; */
   flex-grow: 1;
   /* allows flexbox to grow */
-  margin-bottom: 80px;
-  margin-top: 80px;
+  margin-bottom: 90px;
+  margin-top: 90px;
   position: relative;
 }
 
@@ -52,6 +52,9 @@
   display: none;
 }
 
+#video-container {
+  display: none;
+}
 
 
 

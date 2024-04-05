@@ -1,0 +1,80 @@
+.vertical-flexbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flexbox-container-page {
+  display: flex;
+  flex-direction: row;
+  /* decides in what direction to flex.  row for horizontal | column for vertical */
+  flex-wrap: wrap;
+  /* "wrap" allows items to flood over the flexbox */
+  justify-content: center;
+  /* tells where the content is placed horizontally.  start | center | space-between | space-around*/
+  align-items: stretch;
+  /* tells where the content is placed vertically.  stretch | flex-start | center */
+  align-content: space-between;
+  /* works like justify content but for flex-wrap.  | space-between |  */
+}
+
+.flexbox-item {
+  width: 700px;
+  min-width: 700px;
+  margin: 0px;
+  /*   border: 3px solid black;
+  background-color: grey; */
+  flex-grow: 1;
+  /* allows flexbox to grow */
+  margin-bottom: 80px;
+  margin-top: 80px;
+  position: relative;
+}
+
+.imageSelect,
+.image {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s;
+}
+
+.imageSelect:hover {
+  cursor: pointer;
+  filter: blur(2px) grayscale(100%);
+}
+
+#video-container1,
+#video-container2,
+#video-container3,
+#video-container4,
+#video-container5,
+#video-container6 {
+  display: none;
+}
+
+
+
+
+
+
+
+trigger + div {
+  font-family: Arial, Helvetica, sans-serif;
+  display: none;
+  transition: color 0.3;
+}
+
+trigger:hover + div {
+  height: 10%;
+  width: 100%;
+  display: block;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+
+
+/*   position: absolute; */
+}

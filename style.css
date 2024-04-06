@@ -18,6 +18,8 @@
   /* tells where the content is placed vertically.  stretch | flex-start | center */
   align-content: space-between;
   /* works like justify content but for flex-wrap.  | space-between |  */
+  margin-bottom: 180px;
+  margin-top: 90px;
 }
 
 .flexbox-item {
@@ -28,8 +30,6 @@
   background-color: grey; */
   flex-grow: 1;
   /* allows flexbox to grow */
-  margin-bottom: 90px;
-  margin-top: 90px;
   position: relative;
 }
 
@@ -88,7 +88,7 @@ trigger:hover + div {
 
 
 .flexbox-multi-item {
-  margin-top: 100px;
+/*   margin-top: 100px; */
   display: flex;
   flex-direction: row;
   width: 100%;

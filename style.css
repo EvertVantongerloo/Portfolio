@@ -68,7 +68,7 @@
 
 
 trigger + div {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Nohemi;
   display: none;
   transition: color 0.3;
 }
@@ -86,7 +86,6 @@ trigger:hover + div {
   font-family: Nohemi;
   font-weight: 200;
 
-
 /*   position: absolute; */
 }
 
@@ -98,6 +97,13 @@ trigger:hover + div {
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.video-play-notification{
+  cursor: pointer;
+}
+.video-play-notification:hover{
+  cursor: pointer;
 }
 
 
@@ -114,5 +120,6 @@ trigger:hover + div {
 
 #current-time,
 #current-date {
-  width: 50px;
+  width: 70px;
+  justify-content: end;
 }

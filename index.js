@@ -1,3 +1,11 @@
+/* temp */
+const logo = document.querySelectorAll("#logo path");
+
+/* console.log(logo);
+console.log('letter e is ${logo[path].getTotalLength()}'); */
+
+
+
 /* ----- Favicon Black and White ----- */
 
 // Detect preferred color scheme

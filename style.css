@@ -36,8 +36,6 @@
   position: relative;
 }
 
-
-
 .imageSelect,
 .image {
   width: 100%;
@@ -64,9 +62,6 @@
   display: none;
 }
 
-
-
-
 trigger + div {
   font-family: Nohemi;
   display: none;
@@ -89,7 +84,6 @@ trigger:hover + div {
 /*   position: absolute; */
 }
 
-
 .flexbox-multi-item {
 /*   margin-top: 100px; */
   display: flex;
@@ -105,7 +99,6 @@ trigger:hover + div {
 .video-play-notification:hover{
   cursor: pointer;
 }
-
 
 .text,
 #current-time,

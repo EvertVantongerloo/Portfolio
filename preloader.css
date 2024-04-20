@@ -1,5 +1,7 @@
 /* Main container for the loader */
 .loaderContainer {
+  display: flex;
+  flex-direction: column;
   margin: 0px;
   padding: 0px;
   top: 0px;
@@ -9,7 +11,20 @@
   height: 100%;
   background: rgb(15, 15, 16);
   z-index: 100;
+  overflow: hidden;
 }
+
+/* text loading */
+/* .loadingText{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Nohemi;
+  font-weight: 100;
+  font-size: smaller;
+} */
+
 
 /* SVG logo */
 #logo {
@@ -27,6 +42,7 @@
   stroke-dasharray: 645px;
   stroke-dashoffset: 645px;
   animation: line-anim 2s ease forwards;
+  animation-delay: 1s;
 }
 
 /* Animation for the circle */
@@ -51,7 +67,7 @@
 /* Styling for the loading dot */
 #logo circle.loading-dot {
   animation: blink 1s infinite; /* Blink animation */
-  animation-delay: 2s; /* Delay blinking animation */
+  animation-delay: 3s; /* Delay blinking animation */
 }
 
 /* Animation for drawing the path */

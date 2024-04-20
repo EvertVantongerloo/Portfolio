@@ -3,6 +3,23 @@
   src: url(Web-TT/Nohemi-ExtraLight.woff2);
 }
 
+/* body::before,
+body::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 10000px;
+  z-index: 0;
+  opacity: 30%;
+}
+
+body::before {
+  background: rgb(36, 36, 36);
+  filter: url(#grainy);
+} */
+
 .vertical-flexbox {
   display: flex;
   flex-direction: column;
@@ -23,6 +40,7 @@
   /* works like justify content but for flex-wrap.  | space-between |  */
   margin-bottom: 180px;
   margin-top: 90px;
+  z-index: 10;
 }
 
 .flexbox-item {

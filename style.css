@@ -39,7 +39,8 @@ html, body {
   /* "wrap" allows items to flood over the flexbox */
   justify-content: center;
   /* tells where the content is placed horizontally.  start | center | space-between | space-around*/
-  align-items: center;
+  align-items: start;
+  align-content: center;
   /* tells where the content is placed vertically.  stretch | flex-start | center */
   /*   align-content: space-between; */
   /* works like justify content but for flex-wrap.  | space-between |  */
@@ -54,12 +55,12 @@ html, body {
   width: 50vh;
   min-width: 700px;
   margin: 0px;
-  /*   border: 3px solid black;
-  background-color: grey; */
+  margin-bottom: -5px;
+  border: white;
+  border: 10px;
   flex-grow: 1;
   /* allows flexbox to grow */
   position: relative;
-  align-self: start;
 }
 
 .imageSelect,
@@ -104,8 +105,6 @@ trigger:hover+div {
   position: absolute;
   top: 45%;
   font-weight: 200;
-
-  /*   position: absolute; */
 }
 
 .flexbox-multi-item {
@@ -115,7 +114,6 @@ trigger:hover+div {
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-self: end;
 }
 
 .video-play-notification {

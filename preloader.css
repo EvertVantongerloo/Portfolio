@@ -13,6 +13,29 @@
   z-index: 100;
 }
 
+.disappear {
+  animation: vanish 1s forwards;
+}
+
+.loaderContainer.disappear {
+  transform: translateY(100%);
+}
+
+@keyframes vanish {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+
+  /*   100%{
+    opacity: 0;
+    visibility: hidden; */
+}
+
+
 /* SVG logo */
 #logo {
   position: absolute;
@@ -37,15 +60,20 @@
   stroke-dasharray: 55px;
   stroke-dashoffset: 55px;
   animation: line-anim 2s ease forwards;
-  fill: #ffffff; /* White color for the dot */
-  opacity: 0; /* Initially hidden */
+  fill: #ffffff;
+  /* White color for the dot */
+  opacity: 0;
+  /* Initially hidden */
 }
 
 /* Blink animation for the dot */
 @keyframes blink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
@@ -53,24 +81,15 @@
 
 /* Styling for the loading dot */
 #logo circle.loading-dot {
-  animation: blink 1s infinite; /* Blink animation */
-  animation-delay: 3s; /* Delay blinking animation */
+  animation: blink 1s infinite;
+  /* Blink animation */
+  animation-delay: 3s;
+  /* Delay blinking animation */
 }
 
 /* Animation for drawing the path */
 @keyframes line-anim {
   to {
     stroke-dashoffset: 0;
-  }
-}
-
-.dissapear{
-  animation: vanish 1s forwards;
-}
-
-@keyframes vanish {
-  100%{
-    opacity: 0;
-    visibility: hidden;
   }
 }

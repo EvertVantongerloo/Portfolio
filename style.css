@@ -54,12 +54,9 @@ html, body {
 .flexbox-item {
   width: 50vh;
   min-width: 700px;
-  margin: 0px;
+  margin: 0;
   margin-bottom: -5px;
-  border: white;
-  border: 10px;
   flex-grow: 1;
-  /* allows flexbox to grow */
   position: relative;
 }
 

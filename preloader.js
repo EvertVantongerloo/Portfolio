@@ -1,6 +1,6 @@
 var loader = document.querySelector(".loaderContainer");
+var flexItems = document.querySelectorAll(".flexbox-item");
 
-// Function to make the loader disappear after 5 seconds
 function vanish() {
   // Prevent scrolling
   document.body.style.overflow = 'hidden';
@@ -12,7 +12,10 @@ function vanish() {
     // Allow scrolling after the animation finishes
     setTimeout(function() {
       document.body.style.overflow = '';
-    }, 800); // Adjust this timeout to match the duration of your animation
+      flexItems.forEach(function(item) {
+        item.classList.add("animate");
+      });
+    }, 100); // Adjust this timeout to match the duration of your animation
   }, 3100); // 3500 milliseconds = 3.5 seconds
 }
 

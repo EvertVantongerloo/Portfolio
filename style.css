@@ -51,6 +51,18 @@ html, body {
   scroll-snap-stop: normal;
 }
 
+
+@keyframes slideIn {
+  from {
+    transform: translateY(45%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .flexbox-item {
   width: 50vh;
   min-width: 700px;
@@ -58,6 +70,15 @@ html, body {
   margin-bottom: -5px;
   flex-grow: 1;
   position: relative;
+  opacity: 0;
+}
+
+.animate {
+  animation: slideIn .5s ease forwards;
+}
+
+.delay {
+  animation-delay: .05s;
 }
 
 .imageSelect,
@@ -143,3 +164,4 @@ trigger:hover+div {
 html {
   scroll-snap-type: y mandatory;
 }
+

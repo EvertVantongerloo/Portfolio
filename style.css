@@ -1,12 +1,17 @@
-/* add font Nohemi */
+/* add font Nohemi-ExtraLight */
 @font-face {
-  font-family: Nohemi;
+  font-family: Nohemi-ExtraLight;
   src: url(Web-TT/Nohemi-ExtraLight.woff2);
+}
+
+@font-face {
+  font-family: Nohemi-Light;
+  src: url(Web-TT/Nohemi-Light.woff2);
 }
 
 /* body styling */
 html, body {
-  font-family: Nohemi;
+  font-family: Nohemi-ExtraLight;
 }
 
 

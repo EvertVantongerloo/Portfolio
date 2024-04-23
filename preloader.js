@@ -15,7 +15,7 @@ function vanish() {
       flexItems.forEach(function(item) {
         item.classList.add("animate");
       });
-    }, 100); // Adjust this timeout to match the duration of your animation
+    }, 1); // Adjust this timeout to match the duration of your animation
   }, 3100); // 3500 milliseconds = 3.5 seconds
 }
 

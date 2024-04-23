@@ -74,11 +74,11 @@ html, body {
 }
 
 .animate {
-  animation: slideIn .5s ease forwards;
+  animation: slideIn .8s ease forwards;
 }
 
 .delay {
-  animation-delay: .05s;
+  animation-delay: .1s;
 }
 
 .imageSelect,

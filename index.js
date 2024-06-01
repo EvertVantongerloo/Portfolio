@@ -96,7 +96,7 @@ updateTime();
 
 /* current date */
 
-function updateDate() {
+/* function updateDate() {
   var currentDate = new Date();
   var year = currentDate.getFullYear();
   var month = currentDate.getMonth() + 1; // Month is zero-based
@@ -112,5 +112,41 @@ function updateDate() {
 }
 
 // Call initially to display the date immediately
-updateDate();
+updateDate(); */
+
+
+
+
+
+
+const observerOptions = {
+  root: null, // Use the viewport as the container
+  rootMargin: '40px', // Adjust if needed (e.g., '0px 0px -10% 0px')
+  threshold: 0.1 // Trigger when at least 10% of the element is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry);
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+}, observerOptions);
+
+const hiddenElements = document.querySelectorAll('.spread');
+hiddenElements.forEach((el) => observer.observe(el));
+
+// Check the initial status of each element
+window.addEventListener('load', () => {
+  hiddenElements.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight && el.getBoundingClientRect().bottom > 0) {
+      el.classList.add('show');
+    } else {
+      el.classList.remove('show');
+    }
+  });
+});
 

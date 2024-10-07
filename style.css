@@ -18,6 +18,7 @@
 html, body {
   font-family: Neue Regrade;
   font-size: medium;
+  cursor: none;
 }
 
 
@@ -104,7 +105,7 @@ html, body {
 }
 
 .imageSelect:hover {
-  cursor: pointer;
+  /*cursor: pointer;*/
   filter: blur(1px) grayscale(100%);
 }
 
@@ -149,13 +150,13 @@ trigger:hover+div {
   flex-wrap: wrap;
 }
 
-.video-play-notification {
+/*.video-play-notification {
   cursor: pointer;
-}
+}*/
 
-.video-play-notification:hover {
+/*.video-play-notification:hover {
   cursor: pointer;
-}
+}*/
 
 .text,
 #current-time,
@@ -179,3 +180,53 @@ html {
   scroll-snap-type: y mandatory;
 }
 
+/* Create a dot that will be the custom cursor */
+/* Hide the default cursor */
+body {
+  cursor: none;
+}
+
+/* Create a dot that will be the custom cursor */
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(238, 238, 238); /* Ensure dot is visible when not hovering */
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+ 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Neue Regrade;
+  font-size: medium;
+
+  /* Ensure the dot is visible always */
+  opacity: 1; /* Keep the dot visible at all times */
+}
+
+/* Style for the text inside the dot */
+.cursor-text {
+  font-family: Neue Regrade;
+  font-size: medium;
+  color: transparent; /* Hide text initially */
+  transition: color 0.2s ease; /* Transition for text color */
+  z-index: 1000000;
+}
+
+/* When hovering over imageSelect, show text */
+.cursor-dot.show-text .cursor-text {
+  mix-blend-mode: normal;
+  color: rgb(0, 0, 0); /* Show text when hovering */
+}
+
+/* Enlarge dot on hover */
+.cursor-dot.show-text {
+  width: 200px; /* Increase size */
+  height: 200px; /* Increase size */
+}

@@ -150,3 +150,41 @@ window.addEventListener('load', () => {
   });
 });
 
+
+
+// cursor
+// Select the cursor dot element and the span for the text inside it
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorText = document.querySelector('.cursor-text');
+
+// Update the position of the cursor dot when the mouse moves
+document.addEventListener('mousemove', (e) => {
+    cursorDot.style.left = `${e.pageX}px`;
+    cursorDot.style.top = `${e.pageY}px`;
+});
+
+// Handle hover over elements with the imageSelect class
+const imageSelectDivs = document.querySelectorAll('.imageSelect');
+
+imageSelectDivs.forEach(div => {
+    // When the mouse enters an imageSelect div
+    div.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('show-text'); // Show the text
+
+        // Check if this is the specific div you want to target
+        if (div.id === 'videoDiv') {
+            cursorText.textContent = ''; // Set the specific text
+        } else {
+            cursorText.textContent = 'Bekijk video.'; // Default text for other divs
+        }
+    });
+
+    // When the mouse leaves the imageSelect div
+    div.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('show-text'); // Hide the text
+        cursorText.textContent = ''; // Clear the text when not hovering
+    });
+});
+
+
+

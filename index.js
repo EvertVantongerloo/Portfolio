@@ -159,8 +159,8 @@ const cursorText = document.querySelector('.cursor-text');
 
 // Update the position of the cursor dot when the mouse moves
 document.addEventListener('mousemove', (e) => {
-    cursorDot.style.left = `${e.pageX}px`;
-    cursorDot.style.top = `${e.pageY}px`;
+  cursorDot.style.left = `${e.clientX}px`;
+  cursorDot.style.top = `${e.clientY}px`;
 });
 
 // Handle hover over elements with the imageSelect class

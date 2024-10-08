@@ -157,10 +157,16 @@ window.addEventListener('load', () => {
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorText = document.querySelector('.cursor-text');
 
+// Variables to store the cursor position
+let cursorX = 0;
+let cursorY = 0;
+
 // Update the position of the cursor dot when the mouse moves
 document.addEventListener('mousemove', (e) => {
-  cursorDot.style.left = `${e.clientX}px`;
-  cursorDot.style.top = `${e.clientY}px`;
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+    updateCursorPosition();
+    checkHoverState();
 });
 
 // Handle hover over elements with the imageSelect class
@@ -177,14 +183,59 @@ imageSelectDivs.forEach(div => {
         } else {
             cursorText.textContent = 'Bekijk video.'; // Default text for other divs
         }
+
+        // Force reflow to ensure CSS animation is triggered
+        div.style.animation = 'none';
+        div.offsetHeight; // Trigger reflow
+        div.style.animation = '';
     });
 
     // When the mouse leaves the imageSelect div
     div.addEventListener('mouseleave', () => {
         cursorDot.classList.remove('show-text'); // Hide the text
         cursorText.textContent = ''; // Clear the text when not hovering
+        div.classList.remove('hover'); // Remove hover class
+    });
+
+    // Continuously check hover state while the mouse is over the div
+    div.addEventListener('mousemove', () => {
+        checkHoverState();
     });
 });
 
+// Update cursor position
+function updateCursorPosition() {
+    cursorDot.style.left = `${cursorX}px`;
+    cursorDot.style.top = `${cursorY}px`;
+}
 
+// Check cursor position on scroll
+document.addEventListener('scroll', () => {
+    checkHoverState();
+});
 
+// Function to check hover state
+function checkHoverState() {
+    let isHovering = false;
+    imageSelectDivs.forEach(div => {
+        const rect = div.getBoundingClientRect();
+        if (cursorX >= rect.left && cursorX <= rect.right && cursorY >= rect.top && cursorY <= rect.bottom) {
+            cursorDot.classList.add('show-text'); // Show the text
+            div.classList.add('hover'); // Add hover class
+            isHovering = true;
+
+            if (div.id === 'videoDiv') {
+                cursorText.textContent = ''; // Set the specific text
+            } else {
+                cursorText.textContent = 'Bekijk video.'; // Default text for other divs
+            }
+        } else {
+            div.classList.remove('hover'); // Remove hover class if not hovering
+        }
+    });
+
+    if (!isHovering) {
+        cursorDot.classList.remove('show-text'); // Hide the text
+        cursorText.textContent = ''; // Clear the text when not hovering
+    }
+}

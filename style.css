@@ -104,8 +104,8 @@ html, body {
   transition: filter 0.3s;
 }
 
-.imageSelect:hover {
-  /*cursor: pointer;*/
+.imageSelect.hover {
+  /* cursor: pointer; */
   filter: blur(1px) grayscale(100%);
 }
 

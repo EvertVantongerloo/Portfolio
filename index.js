@@ -153,7 +153,6 @@ window.addEventListener('load', () => {
 
 
 // cursor
-// Select the cursor dot element and the span for the text inside it
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorText = document.querySelector('.cursor-text');
 
@@ -169,20 +168,31 @@ document.addEventListener('mousemove', (e) => {
     checkHoverState();
 });
 
+// Update cursor position on scroll
+document.addEventListener('scroll', () => {
+    updateCursorPosition();
+    checkHoverState();
+});
+
+// Function to update cursor position
+function updateCursorPosition() {
+    cursorDot.style.left = `${cursorX}px`;
+    cursorDot.style.top = `${cursorY}px`;
+}
+
 // Handle hover over elements with the imageSelect class
 const imageSelectDivs = document.querySelectorAll('.imageSelect');
 
-imageSelectDivs.forEach(div => {
+imageSelectDivs.forEach((div, index) => {
     // When the mouse enters an imageSelect div
     div.addEventListener('mouseenter', () => {
         cursorDot.classList.add('show-text'); // Show the text
 
-        // Check if this is the specific div you want to target
-        if (div.id === 'videoDiv') {
-            cursorText.textContent = ''; // Set the specific text
-        } else {
-            cursorText.textContent = 'Bekijk video.'; // Default text for other divs
-        }
+        // Assign a specific class based on the index or any other logic
+        cursorDot.classList.add(`hover-color-${index % 7}`); // Cycle through 7 colors
+
+        // Set the text content based on the div
+        cursorText.textContent = div.dataset.text || 'Bekijk video.'; // Use data attribute or default text
 
         // Force reflow to ensure CSS animation is triggered
         div.style.animation = 'none';
@@ -195,6 +205,7 @@ imageSelectDivs.forEach(div => {
         cursorDot.classList.remove('show-text'); // Hide the text
         cursorText.textContent = ''; // Clear the text when not hovering
         div.classList.remove('hover'); // Remove hover class
+        cursorDot.classList.remove(`hover-color-${index % 7}`); // Remove specific color class
     });
 
     // Continuously check hover state while the mouse is over the div
@@ -203,34 +214,22 @@ imageSelectDivs.forEach(div => {
     });
 });
 
-// Update cursor position
-function updateCursorPosition() {
-    cursorDot.style.left = `${cursorX}px`;
-    cursorDot.style.top = `${cursorY}px`;
-}
-
-// Check cursor position on scroll
-document.addEventListener('scroll', () => {
-    checkHoverState();
-});
-
 // Function to check hover state
 function checkHoverState() {
     let isHovering = false;
-    imageSelectDivs.forEach(div => {
+    imageSelectDivs.forEach((div, index) => {
         const rect = div.getBoundingClientRect();
         if (cursorX >= rect.left && cursorX <= rect.right && cursorY >= rect.top && cursorY <= rect.bottom) {
             cursorDot.classList.add('show-text'); // Show the text
             div.classList.add('hover'); // Add hover class
             isHovering = true;
 
-            if (div.id === 'videoDiv') {
-                cursorText.textContent = ''; // Set the specific text
-            } else {
-                cursorText.textContent = 'Bekijk video.'; // Default text for other divs
-            }
+            // Update cursor color based on the hovered element
+            cursorDot.classList.add(`hover-color-${index % 7}`);
+            cursorText.textContent = div.dataset.text || 'Bekijk video.'; // Use data attribute or default text
         } else {
             div.classList.remove('hover'); // Remove hover class if not hovering
+            cursorDot.classList.remove(`hover-color-${index % 7}`); // Remove specific color class
         }
     });
 

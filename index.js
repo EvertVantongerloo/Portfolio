@@ -151,6 +151,34 @@ window.addEventListener('load', () => {
 });
 
 
+// play video on hover
+document.addEventListener('DOMContentLoaded', () => {
+  const videoContainers = document.querySelectorAll('.videoHoverContainer');
+  const videos = document.querySelectorAll('.vid');
+
+  videoContainers.forEach((container, index) => {
+    const video = videos[index];
+
+    function playVideo() {
+      video.play();
+    }
+
+    function pauseVideo() {
+      video.pause();
+    }
+
+    container.addEventListener('mouseenter', playVideo);
+    container.addEventListener('mouseleave', pauseVideo);
+
+    // Add touch support for mobile devices
+    container.addEventListener('touchstart', playVideo);
+    container.addEventListener('touchend', pauseVideo);
+  });
+});
+
+
+
+
 
 // cursor
 const cursorDot = document.querySelector('.cursor-dot');

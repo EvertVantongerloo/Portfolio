@@ -21,8 +21,8 @@
     <span class="cursor-text"></span>
   </div>
 
-  
-</div>
+
+  </div>
   <div class="loaderContainer">
     <div class="logoDiv">
       <svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -124,8 +124,10 @@
       </div>
       <div class="flexbox-item delay">
         <trigger>
-          <img class="imageSelect" src="Images/Portfolio28.jpg"
-            onclick="playVideo('Videos/1_Datsun-Video.mp4', 'video-container1')">
+          <video class="imageSelect" src="Videos/Portfolio28.mp4" autoplay loop muted
+            onclick="playVideo('Videos/1_Datsun-Video.mp4', 'video-container1')"></video>
+          <!-- <img class="imageSelect" src="Images/Portfolio28.jpg"
+            onclick="playVideo('Videos/1_Datsun-Video.mp4', 'video-container1')"> -->
         </trigger>
         <!-- <div style="background-color: rgb(219, 132, 55);">Klik om de video af te spelen.</div> -->
         <div id="video-container1" class="image">
@@ -414,10 +416,16 @@
       </div>
 
       <div class="flexbox-item">
-        <img class="image" src="Images/Portfolio231.jpg">
+        <div class="videoHoverContainer">
+          <!-- <img class="image" src="Images/Portfolio231.jpg"> -->
+          <video class="image vid" src="Videos/Portfolio231.mp4" type="video/mp4" loop muted></video>
+        </div>
       </div>
       <div class="flexbox-item delay">
-        <img class="image" src="Images/Portfolio232.jpg">
+        <div class="videoHoverContainer">
+          <!-- <img class="image" src="Images/Portfolio232.jpg"> -->
+          <video class="image vid" src="Videos/Portfolio232.mp4" type="video/mp4" loop muted></video>
+        </div>
       </div>
     </div>
   </div>

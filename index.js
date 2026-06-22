@@ -153,26 +153,61 @@ window.addEventListener('load', () => {
 
 // play video on hover
 document.addEventListener('DOMContentLoaded', () => {
-  const videoContainers = document.querySelectorAll('.videoHoverContainer');
-  const videos = document.querySelectorAll('.vid');
+  const containers = document.querySelectorAll('.videoHoverContainer');
 
-  videoContainers.forEach((container, index) => {
-    const video = videos[index];
+  containers.forEach((container) => {
+    // Zoek de video BINNEN deze specifieke container (veel veiliger!)
+    const video = container.querySelector('.vid');
+    if (!video) return; // Sla over als er geen video is
 
-    function playVideo() {
-      video.play();
-    }
+    let playPromise = null;
 
-    function pauseVideo() {
-      video.pause();
-    }
+    const handlePlay = () => {
+      // Speel alleen af als de video gepauzeerd is
+      if (video.paused) {
+        playPromise = video.play();
+        // Vang fouten af (bijv. door ontbrekende muted)
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.warn('Autoplay geblokkeerd:', error);
+            // Zet hem op mute als hij geen mute heeft, en probeer opnieuw
+            if (!video.muted) {
+              video.muted = true;
+              video.play().catch(e => console.warn('Nog steeds geblokkeerd'));
+            }
+          });
+        }
+      }
+    };
 
-    container.addEventListener('mouseenter', playVideo);
-    container.addEventListener('mouseleave', pauseVideo);
+    const handlePause = () => {
+      // Pauzeer alleen als hij niet gepauzeerd is
+      if (!video.paused) {
+        video.pause();
+      }
+    };
 
-    // Add touch support for mobile devices
-    container.addEventListener('touchstart', playVideo);
-    container.addEventListener('touchend', pauseVideo);
+    // --- Hover (desktop) ---
+    container.addEventListener('mouseenter', handlePlay);
+    container.addEventListener('mouseleave', handlePause);
+
+    // --- Mobiel (touch) - aanpasbaar ---
+    // Optie A: Speel af bij aanraken, pauzeer NIET bij loslaten (blijft spelen)
+    container.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // Voorkomt dat de pagina scrollt/zoomt
+      handlePlay();
+    }, { passive: false });
+
+    // Optie B (als je écht wilt pauzeren bij loslaten, maar dan moet de gebruiker zijn vinger vasthouden):
+    // container.addEventListener('touchend', handlePause);
+
+    // Optie C (toggle bij klik voor de beste mobiele ervaring):
+    container.addEventListener('click', (e) => {
+      // Voorkom dat de click ook de mouseenter triggert op desktop (gebeurt soms)
+      if (window.innerWidth <= 768) { // Alleen op mobiel
+        video.paused ? handlePlay() : handlePause();
+      }
+    });
   });
 });
 
